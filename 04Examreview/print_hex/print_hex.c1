@@ -1,0 +1,74 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_hex.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chford <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/11/12 14:30:40 by chford            #+#    #+#             */
+/*   Updated: 2018/11/12 16:49:04 by chford           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+
+int		get_highest_power(int num)
+{
+	int		check;
+	int		power;
+
+	power = 0;
+	check = 1;
+	while (check < num && num > 15)
+		check *= 16;
+	while (check > 16)
+	{
+		check /= 16;
+		power++;
+	}
+	if(num % 16 == 0)
+		power++;
+	return (power);
+}
+
+void	print_hex(int num)
+{
+	char	array[16] = {'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'};
+	int		power;
+	int		poweri;
+	int		current;
+	int		index;
+
+	power = get_highest_power(num);
+	while (power >= 0)
+	{
+		current = 1;
+		poweri = power;
+		if (power > 0)
+		{
+			while (poweri >= 1)
+			{
+				current *= 16;
+				poweri--;
+			}
+		}
+		index = num / current;
+		write(1, &array[index], 1);
+		num -= current;
+		power--;
+	}
+	write(1, "\n", 1);
+}
+
+int		main(int argc, char **argv)
+{
+	int		num;
+
+	if (argc != 2 || atoi(argv[1]) == 0)
+		return (1);
+	num = atoi(argv[1]);
+	print_hex(num);
+	return (0);
+}
