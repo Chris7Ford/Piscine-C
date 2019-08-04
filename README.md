@@ -2,7 +2,7 @@
 
 ### Introduction
 
-The Piscine C Repository contains all of my original work from the grueling Piscine C at 42 Silicon Valley.  The work posted in here was my first exposure to C and is unedited.  Below, I have also posted my scores for each day, as well as for the exams.
+The Piscine C Repository contains all of my original work from the grueling Piscine C (October 2018) at 42 Silicon Valley.  The work posted in here was my first exposure to C and is unedited.  Below, I have also posted my scores for each day, as well as for the exams.
 
 ### Challeges
 
